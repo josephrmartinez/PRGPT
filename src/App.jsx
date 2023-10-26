@@ -1,12 +1,17 @@
 import { useState } from 'react'
 import './App.css'
 import Resource from './components/Resource'
+import TextAreaWithAutoInsert from './components/TextAreaWithAutoInsert'
 
 function App() {
   const [resources, setResources] = useState([])
   
   function addResource(){
     setResources([...resources, <Resource key={resources.length} />])
+
+  }
+
+  function checkForInvoke(){
 
   }
 
@@ -31,7 +36,7 @@ function App() {
         
         <div>
           <div className='mb-8'>TASK</div>
-          <textarea className='h-96 w-full border'></textarea>
+          <TextAreaWithAutoInsert />
         </div>
 
       </div>
