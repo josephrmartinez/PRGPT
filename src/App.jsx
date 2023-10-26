@@ -1,8 +1,14 @@
 import { useState } from 'react'
 import './App.css'
+import Resource from './components/Resource'
 
 function App() {
+  const [resources, setResources] = useState([])
   
+  function addResource(){
+    setResources([...resources, <Resource key={resources.length} />])
+
+  }
 
   return (
     <div className='h-full'>
@@ -13,27 +19,9 @@ function App() {
         <div className='flex flex-col'>
           <div className='mb-8'>RESOURCES</div>
 
-          <input type="text" className="border" name="" id="" placeholder='resource:' />
-          <textarea className='border' placeholder='paste text here'></textarea>
-          <input type="text" className="border" name="" id="" placeholder='use for:' />
+          {resources}
 
-          <div className='py-8'></div>
-
-          <input type="text" className="border" name="" id="" placeholder='resource:' />
-          <textarea className='border' placeholder='paste text here'></textarea>
-          <input type="text" className="border" name="" id="" placeholder='use for:' />
-
-          <div className='py-8'></div>
-
-          <input type="text" className="border" name="" id="" placeholder='resource:' />
-          <textarea className='border' placeholder='paste text here'></textarea>
-          <input type="text" className="border" name="" id="" placeholder='use for:' />
-
-          <div className='py-8'></div>
-
-          <input type="text" className="border" name="" id="" placeholder='resource:' />
-          <textarea className='border' placeholder='paste text here'></textarea>
-          <input type="text" className="border" name="" id="" placeholder='use for:' />
+          <button className="border w-28 py-2 mx-auto text-sm rounded-full" onClick={addResource}> + resource</button>
 
           <div className='py-8'></div>
 
@@ -47,10 +35,6 @@ function App() {
         </div>
 
       </div>
-
-
-
-      {/* <button className='border rounded-full py-2 px-4'>add resource</button> */}
         
     </div>
   )
