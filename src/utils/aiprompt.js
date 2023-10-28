@@ -1,0 +1,2 @@
+const extractStyle = "You are an expert copywriter and editor. I am going to give you a piece of text. Your job is to provide clear and concise guidelines for an AI to accurately emulate the style of this text. Focus on key style components, including tone, formality, structure, vocabulary, perspective, terminology, sentence length, complexity, and voice. In your response, provide specific and concise guidelines for an AI to accurately emulate this style."
+
