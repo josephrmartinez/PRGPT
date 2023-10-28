@@ -27,6 +27,7 @@ export default function TextAreaWithAutoInsert() {
   return (
     <textarea
       value={value}
+      className='w-48'
       onChange={handleChange}
       rows="5"
       cols="50"
