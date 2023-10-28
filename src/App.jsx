@@ -4,10 +4,12 @@ import Resource from './components/Resource'
 import StyleRef from './components/StyleRef'
 import TextAreaWithAutoInsert from './components/TextAreaWithAutoInsert'
 import Task from './components/Task'
+import getStyleFromRef from './utils/aiprompt'
 
 function App() {
   const [resources, setResources] = useState([])
-  const [styleRefs, setStyleRefs] = useState([])
+  const [styleRef, setStyleRef] = useState("")
+  const [response, setResponse] = useState("")
 
   
   function addResource(){
@@ -15,12 +17,15 @@ function App() {
 
   }
 
-  function addStyleRef(){
-    setStyleRefs([...styleRefs, <StyleRef key={styleRefs.length} />])
+  function handleStyleInputChange(e){
+    const newValue = e.target.value;
+    setStyleRef(newValue)
   }
 
-  function checkForInvoke(){
-
+  async function handleSubmit(){
+    const stylePrompt = await getStyleFromRef(styleRef)
+    console.log(stylePrompt)
+    setResponse(stylePrompt)
   }
 
   return (
@@ -38,7 +43,13 @@ function App() {
 
           <div className='flex flex-col items-start mb-6'>
             <div className='text-md font-semibold tracking-wide mb-2'>IN THIS STYLE</div>
-            <textarea type='text' className='w-56 h-24 border rounded-md indent-2' placeholder='paste text'></textarea>
+            <textarea 
+              type='text' 
+              className='w-56 h-24 border rounded-md indent-2' 
+              placeholder='paste text' 
+              value={styleRef} 
+              onChange={handleStyleInputChange}
+            ></textarea>
           </div>
 
           <div className='flex flex-col items-start mb-6'>
@@ -49,8 +60,16 @@ function App() {
         </div>
 
         <div className='col-span-2'>
-          <button className=' shadow-md rounded-lg mx-auto mt-7 px-3 py-2 bg-green-700 active:bg-green-800 text-neutral-200 tracking-wider'>CREATE DRAFT</button>
+          <button 
+            className='shadow-md rounded-lg mx-auto mt-7 px-3 py-2 bg-green-700 active:bg-green-800 text-neutral-200 tracking-wider'
+            onClick={handleSubmit}
+            >
+              CREATE DRAFT</button>
         </div>
+        {response && 
+        <div>
+          {response}
+          </div>}
         
 
       </div>
