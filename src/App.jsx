@@ -1,8 +1,6 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import Resource from './components/Resource'
-import StyleRef from './components/StyleRef'
-import TextAreaWithAutoInsert from './components/TextAreaWithAutoInsert'
 import Task from './components/Task'
 import getStyleFromRef from './utils/aiprompt'
 
