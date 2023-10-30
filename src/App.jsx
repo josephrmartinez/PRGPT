@@ -9,6 +9,7 @@ function App() {
   const [resources, setResources] = useState([])
   const [styleRef, setStyleRef] = useState("")
   const [response, setResponse] = useState("")
+  const [selectedTask, setSelectedTask] = useState('')
 
   
   function addResource(){
@@ -21,10 +22,16 @@ function App() {
     setStyleRef(newValue)
   }
 
+  function handleTaskSelect(selectedValue){
+    setSelectedTask(selectedValue)
+  }
+
   async function handleSubmit(){
-    const stylePrompt = await getStyleFromRef(styleRef)
-    console.log(stylePrompt)
-    setResponse(stylePrompt)
+    // const stylePrompt = await getStyleFromRef(styleRef)
+    // console.log(stylePrompt)
+    // setResponse(stylePrompt)
+    console.log("style ref:", styleRef)
+    console.log("selected task:", selectedTask)
   }
 
   return (
@@ -37,7 +44,7 @@ function App() {
         <div className='col-span-1 flex flex-col'>
           <div className='flex flex-col items-start mb-6'>
             <div className='text-md font-semibold tracking-wide mb-2'>GENERATE</div> 
-            <SelectTask />
+            <SelectTask onSelect={handleTaskSelect} />
           </div>
 
           <div className='flex flex-col items-start mb-6'>

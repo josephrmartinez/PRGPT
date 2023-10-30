@@ -1,7 +1,7 @@
 import CreatableSelect from 'react-select/creatable';
 import Select from 'react-select';
 
-export default function SelectTask(){
+export default function SelectTask({onSelect}){
 
     const pressReleaseStructure = 
     `Headline: Summarize the newsworthy element of the announcement in 10-15 words. Include any prominent names (individuals or organizations) that would be attractive to someone looking at the release.
@@ -23,9 +23,18 @@ export default function SelectTask(){
         { value: "that", label: "event recap" }, 
         { value: pressReleaseStructure, label: "press release" }]
 
+
+    function handleSelectChange(selectedOption) {
+        onSelect(selectedOption.value)
+    }
+
     return (
         <div className='w-56'>
-            <Select options={options} className='text-left' placeholder="select..." />
+            <Select 
+                options={options} 
+                className='text-left' 
+                placeholder="select..."
+                onChange={handleSelectChange} />
         </div>
         
     )
