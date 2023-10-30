@@ -3,7 +3,9 @@ import Select from 'react-select';
 
 export default function SelectTask({onSelect}){
 
-    const pressReleaseStructure = 
+    const pressRelease = {
+        task: 'press release',
+        structure:
     `Headline: Summarize the newsworthy element of the announcement in 10-15 words. Include any prominent names (individuals or organizations) that would be attractive to someone looking at the release.
 
     Subhead: In 10-15 words, expand upon the headline with additional details. This could include figures that explain the impact of the news, who the announcement will impact, what it means for a certain group of people or region.
@@ -17,11 +19,12 @@ export default function SelectTask({onSelect}){
     Quote: a quote from a leader within an economic development organization. This should tie the announcement back to how it fits into the growth of Greater Phoenix, and can also include the specific impact it will have on communities or the infrastructure of the region. Include a forward-looking sentiment here.
 
     Partner Quote: A quote from the organization/entity partnering with the economic development organization. This should speak on behalf of the company, and briefly explain why they are choosing to invest in the region, or why the region is important to their work. The quote should be two sentences long.`
+    }
 
     const options = [
         { value: "this", label: "blog post" }, 
         { value: "that", label: "event recap" }, 
-        { value: pressReleaseStructure, label: "press release" }]
+        { value: pressRelease, label: "press release" }]
 
 
     function handleSelectChange(selectedOption) {

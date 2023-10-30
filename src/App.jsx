@@ -10,11 +10,23 @@ function App() {
   const [styleRef, setStyleRef] = useState("")
   const [response, setResponse] = useState("")
   const [selectedTask, setSelectedTask] = useState('')
+  const [resourceData, setResourceData] = useState([]);
+
 
   
-  function addResource(){
-    setResources([...resources, <Resource key={resources.length} />])
+  function addResource() {
+    setResourceData([...resourceData, { name: '', text: '', use: '' }]); // Add an empty resource object
+    const resourceKey = resourceData.length; // Use the index as a key
+    setResources([...resources, <Resource key={resourceKey} index={resourceKey} updateResourceData={updateResourceData} />]);
+  }
 
+  function updateResourceData(index, data) {
+    // Update the corresponding resource object in the array
+    setResourceData((prevResourceData) => {
+      const updatedResourceData = [...prevResourceData];
+      updatedResourceData[index] = data;
+      return updatedResourceData;
+    });
   }
 
   function handleStyleInputChange(e){
@@ -27,11 +39,42 @@ function App() {
   }
 
   async function handleSubmit(){
-    // const stylePrompt = await getStyleFromRef(styleRef)
-    // console.log(stylePrompt)
-    // setResponse(stylePrompt)
-    console.log("style ref:", styleRef)
-    console.log("selected task:", selectedTask)
+
+    const mappedResourceData = resourceData.map((item, index) => {
+      const keyValuePairs = Object.entries(item).map(([key, value]) => `${key}: '${value}'`);
+      return `(${index + 1}) {${keyValuePairs.join(', ')}}`;
+    });
+    
+    const resourceDataString = mappedResourceData.join('\n');
+    
+
+    const stylePrompt = await getStyleFromRef(styleRef)
+    // const stylePrompt = "style prompt"
+    
+    const prompt = 
+      `Create a ${selectedTask.task} with the following STRUCTURE: 
+      ${selectedTask.structure}
+      ///
+
+      Follow these guidelines for the STYLE of the ${selectedTask.task}:
+      ${stylePrompt}
+      ///
+
+      Use the following RESOURCES:
+      ${resourceDataString}
+      ///
+      
+      Return your response as a complete ${selectedTask.task} 
+      taking into account the STRUCTURE, STYLE, and RESOURCES noted above.`
+
+
+    console.log("prompt:", prompt)
+    // send prompt to gpt4
+
+    // console.log("style ref:", styleRef)
+    // console.log("selected task:", selectedTask)
+    // console.log("resource data:", resourceData)
+
   }
 
   return (
