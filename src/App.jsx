@@ -8,6 +8,7 @@ import StyleSelect from './components/StyleSelect'
 function App() {
   const [resources, setResources] = useState([])
   const [styleRef, setStyleRef] = useState("")
+  const [projectBrief, setProjectBrief] = useState("")
   const [response, setResponse] = useState("")
   const [selectedTask, setSelectedTask] = useState('')
   const [resourceData, setResourceData] = useState([]);
@@ -52,7 +53,10 @@ function App() {
     // const stylePrompt = "style prompt"
     
     const prompt = 
-      `Create a ${selectedTask.task} with the following STRUCTURE: 
+      `TASK: Create a ${selectedTask.task}.
+      PROJECT BRIEF: ${projectBrief} 
+      
+      Use the following STRUCTURE: 
       ${selectedTask.structure}
       ///
 

@@ -14,11 +14,11 @@ export default function SelectTask({onSelect}){
 
     Intro: One or two sentences that formally introduces the newsworthy elements of the announcements. This could include major figures or entities involved to show the impact (jobs created, grant amount received, square feet of a project, CapEx, investment amount, etc.)
 
-    Background: 2-3 sentence paragraphs that incorporate research and commentary to emphasize why the announcement is important, tell an audience how it will affect a community and the lasting impacts it may have. This could also include more specific details like partners involved, history or an explanation of those partners, logistics of the announcement, a timeline of an event, etc.
+    Background: 2-3 sentence paragraphs that incorporate research and commentary to emphasize why the announcement is important. Tell an audience how it will affect a community and the lasting impacts it may have. This could also include more specific details like partners involved, history or an explanation of those partners, logistics of the announcement, a timeline of an event, etc.
 
-    Quote: a quote from a leader within an economic development organization. This should tie the announcement back to how it fits into the growth of Greater Phoenix, and can also include the specific impact it will have on communities or the infrastructure of the region. Include a forward-looking sentiment here.
+    Quote: MAKE UP a quote from a leader within an economic development organization. This should tie the announcement back to how it fits into the growth of Greater Phoenix, and can also include the specific impact it will have on communities or the infrastructure of the region. Include a forward-looking sentiment here.
 
-    Partner Quote: A quote from the organization/entity partnering with the economic development organization. This should speak on behalf of the company, and briefly explain why they are choosing to invest in the region, or why the region is important to their work. The quote should be two sentences long.`
+    Partner Quote: MAKE UP a quote from the organization/entity partnering with the economic development organization. This should speak on behalf of the company, and briefly explain why they are choosing to invest in the region, or why the region is important to their work. The quote should be two sentences long.`
     }
 
     const options = [
